@@ -49,6 +49,10 @@ const ProductSchema = new mongoose.Schema(
     images: {
       type: [String], 
         },
+    about:{
+      type: String,
+      required: [true, 'Please provide about the car details'],
+        }
   },
   { timestamps: true}
 );
