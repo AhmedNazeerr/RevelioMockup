@@ -52,6 +52,10 @@ const ProductSchema = new mongoose.Schema(
     about:{
       type: String,
       required: [true, 'Please provide about the car details'],
+        },
+        preparation:{
+          type: String,
+          required: [true, 'Please provide about the car details'],
         }
   },
   { timestamps: true}

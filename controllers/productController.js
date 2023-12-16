@@ -16,15 +16,16 @@ const createProduct = async (req, res) => {
     capClean,
     autoTraderDetail,
     images,
-    about
+    about,
+    preparation
   } = req.body;
 
   console.log(req.body);
   // Check for required fields
-  if (!make || !model || !variant || !registration || !mileage || !numberOfOwners || !specification || !serviceHistory || !askingPrice || !capClean || !autoTraderDetail ||!images ||!about) {
+  if (!make || !model || !variant || !registration || !mileage || !numberOfOwners || !specification || !serviceHistory || !askingPrice || !capClean || !autoTraderDetail ||!images ||!about || !preparation) {
     throw new CustomError.NotFoundError('Required fields are missing');
   }
-  const product = await Product.create({make,model,variant,registration,mileage,numberOfOwners,specification,serviceHistory,askingPrice,capClean,autoTraderDetail,images,about});
+  const product = await Product.create({make,model,variant,registration,mileage,numberOfOwners,specification,serviceHistory,askingPrice,capClean,autoTraderDetail,images,about,preparation});
   res.status(StatusCodes.CREATED).json({ product });
 };
 const getAllProducts = async (req, res) => {
