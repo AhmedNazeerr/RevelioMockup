@@ -52,10 +52,11 @@ app.use('/api/v1/products', productRouter);
 app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);
 
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 6000;
 const start = async () => {
   try {
     await connectDB(process.env.MONGO_URL);
+    console.log("DataBase has been synced")
     app.listen(port, () =>
       console.log(`Server is listening on port ${port}...`)
     );
