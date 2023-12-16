@@ -26,6 +26,7 @@ const errorHandlerMiddleware = require('./middleware/error-handler');
 
 app.use(express.json());
 app.use(cors({
+  origin:"http://localhost:5173",
   credentials:true
 }));
 // app.set('trust proxy', 1);
