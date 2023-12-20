@@ -23,7 +23,7 @@ const LoginPage = () => {
         dispatch(reviloActions.showLoaderToogler())
         try {
             const { email, password } = values
-            const response = await axios.post('http://149.100.156.7:5000/api/v1/auth/login', { email: email, password: password }, { withCredentials: true })
+            const response = await axios.post('https://revelio-mockup-g921.vercel.app:5000/api/v1/auth/login', { email: email, password: password }, { withCredentials: true })
             if (response.status === 200) {
                 dispatch(reviloActions.setUser(response.data.user.userId))
                 navigate('/car-listing')
