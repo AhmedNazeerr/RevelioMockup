@@ -23,7 +23,7 @@ const LoginPage = () => {
         dispatch(reviloActions.showLoaderToogler())
         try {
             const { email, password } = values
-            const response = await axios.post('https://revelio-mockup-g921.vercel.app:5000/api/v1/auth/login', { email: email, password: password }, { withCredentials: true })
+            const response = await axios.post('http://149.100.156.7:5000/api/v1/auth/login', { email: email, password: password })
             if (response.status === 200) {
                 dispatch(reviloActions.setUser(response.data.user.userId))
                 navigate('/car-listing')
@@ -35,7 +35,7 @@ const LoginPage = () => {
     }
     const fetchUser = async () => {
         try {
-            const { data } = await axios.get(`http://localhost:5000/api/v1/users/showMe`, { withCredentials: true });
+            const { data } = await axios.get(`http://149.100.156.7:5000/api/v1/users/showMe`, { withCredentials: true });
             dispatch(reviloActions.setUser(data.user.userId));
         } catch (error) {
             dispatch(reviloActions.resetUser())

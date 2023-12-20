@@ -25,10 +25,7 @@ const notFoundMiddleware = require('./middleware/not-found');
 const errorHandlerMiddleware = require('./middleware/error-handler');
 
 app.use(express.json());
-app.use(cors({
-  origin:"http://149.100.156.7:4173/",
-  credentials:true
-}));
+app.use(cors({origin:"*"}));
 // app.set('trust proxy', 1);
 // app.use(
 //   rateLimiter({
