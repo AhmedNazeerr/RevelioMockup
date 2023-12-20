@@ -27,7 +27,7 @@ const Listing = () => {
     },[])
     const logoutUser = async () => {
         try {
-            const response = await axios.delete('http://localhost:5000/api/v1/auth/logout', { withCredentials: true })
+            const response = await axios.delete('http://149.100.156.7:5000/api/v1/auth/logout', { withCredentials: true })
             if (response.status === 200) {
                 dispatch(reviloActions.resetUser())
                 navigate('/')
