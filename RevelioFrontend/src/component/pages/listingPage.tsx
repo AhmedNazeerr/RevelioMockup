@@ -13,7 +13,7 @@ const Listing = () => {
     const navigate = useNavigate()
     const fetchUser = async () => {
         try {
-            const { data } = await axios.get(`http://localhost:5000/api/v1/users/showMe`, { withCredentials: true });
+            const { data } = await axios.get(`http://149.100.156.7:5000/api/v1/users/showMe`, { withCredentials: true });
             dispatch(reviloActions.setUser(data.user.userId));
         } catch (error) {
             dispatch(reviloActions.resetUser())

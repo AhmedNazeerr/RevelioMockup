@@ -17,7 +17,7 @@ const ProductCard: React.FC<{ item: { make: string, model: string, variant: stri
     };
     const updateProduct = async () => {
         try {
-            const response = await axios.get(`http://localhost:5000/api/v1/products/${item._id}`)
+            const response = await axios.get(`http://149.100.156.7:5000/api/v1/products/${item._id}`)
             if (response.status === 200) {
                 dispatch(reviloActions.set(response.data.product))
                 navigate('/key-information')
