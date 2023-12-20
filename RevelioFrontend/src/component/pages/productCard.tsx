@@ -35,7 +35,7 @@ const ProductCard: React.FC<{ item: { make: string, model: string, variant: stri
                 {item.variant && <p>{item.variant}</p>}
             </div>
             <div className="text-gray-500 text-xs flex gap-5 pr-2">
-                <i className="fa-regular fa-copy pr-1 cursor-pointer" onClick={() => copyToClipboard(`http://localhost:5173/car-display/${item._id}`)}></i>
+                <i className="fa-regular fa-copy pr-1 cursor-pointer" onClick={() => copyToClipboard(`https://revelio-mockup-98ho.vercel.app/car-display/${item._id}`)}></i>
                 <i className="fa-solid fa-pen cursor-pointer" onClick={updateProduct}></i>
                 <i className="fa-regular fa-trash-can cursor-pointer" onClick={() => deleteProduct(item._id)}></i>
             </div>
