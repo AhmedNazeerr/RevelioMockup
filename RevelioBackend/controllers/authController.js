@@ -25,7 +25,7 @@ const register = async (req, res) => {
 
 const login = async (req, res) => {
   const { email, password } = req.body;
-
+console.log(email,password)
   if (!email || !password) {
     throw new CustomError.BadRequestError('Please provide email and password');
   }
@@ -52,7 +52,7 @@ const login = async (req, res) => {
     }
     refreshToken = existingToken.refreshToken;
     attachCookiesToResponse({ res, user: tokenUser, refreshToken });
-    res.status(StatusCodes.OK).json({ user: tokenUser });
+    res.status(StatusCodes.OK).json({msg:"User have been LoggedIn successfully", user: tokenUser });
     return;
   }
 
@@ -62,7 +62,7 @@ const login = async (req, res) => {
   const userToken = { refreshToken, ip, userAgent, user: user._id };
   await Token.create(userToken);
   attachCookiesToResponse({ res, user: tokenUser, refreshToken });
-  res.status(StatusCodes.OK).json({ user: tokenUser });
+  res.status(StatusCodes.OK).json({msg:"User have been LoggedIn successfully", user: tokenUser });
 };
 
 const logout = async (req, res) => {

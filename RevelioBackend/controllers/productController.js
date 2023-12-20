@@ -26,11 +26,11 @@ const createProduct = async (req, res) => {
     throw new CustomError.NotFoundError('Required fields are missing');
   }
   const product = await Product.create({make,model,variant,registration,mileage,numberOfOwners,specification,serviceHistory,askingPrice,capClean,autoTraderDetail,images,about,preparation});
-  res.status(StatusCodes.CREATED).json({ product });
+  res.status(StatusCodes.CREATED).json({msg:"product created successfully", product });
 };
 const getAllProducts = async (req, res) => {
   const products = await Product.find({});
-  res.status(StatusCodes.OK).json({ products, count: products.length });
+  res.status(StatusCodes.OK).json({msg:"products fetched successfully", products, count: products.length });
 };
 const getSingleProduct = async (req, res) => {
   const { id: productId } = req.params;
@@ -39,7 +39,7 @@ const getSingleProduct = async (req, res) => {
     throw new CustomError.NotFoundError(`No product with id : ${productId}`);
   }
 
-  res.status(StatusCodes.OK).json({ product });
+  res.status(StatusCodes.OK).json({mag:"product fetched successfully", product });
 };
 const updateProduct = async (req, res) => {
   const { id: productId } = req.params;
@@ -50,7 +50,7 @@ const updateProduct = async (req, res) => {
   if (!product) {
     throw new CustomError.NotFoundError(`No product with id : ${productId}`);
   }
-  res.status(StatusCodes.OK).json({ product });
+  res.status(StatusCodes.OK).json({msg:"product updated successfully", product });
 };
 const deleteProduct = async (req, res) => {
   const { id: productId } = req.params;

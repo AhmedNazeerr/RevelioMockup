@@ -1,0 +1,64 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.ql-container {
+    min-height: 10.8em;
+    border-bottom-left-radius: 0.3em;
+    border-bottom-right-radius: 0.3em;
+    background: #fefcfc;
+    outline: none;
+}
+
+.ql-container:focus,
+.ql-editor:focus {
+    outline: none;
+}
+
+.ql-toolbar {
+    background: #eaecec;
+    border-top-left-radius: 0.3rem;
+    border-top-right-radius: 0.3rem;
+    border-bottom: none;
+    font-size: 0.625rem;
+}
+
+ul {
+    list-style-type: disc;
+    list-style-position: inside;
+}
+
+div.custom-list div ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+div.custom-list div ul li {
+    background-image: url('https://firebasestorage.googleapis.com/v0/b/my-cart-f5e2b.appspot.com/o/Vectorcheck.png?alt=media&token=d22649dd-0f7c-4af6-b729-b8eb331f0aaa');
+    background-repeat: no-repeat;
+    padding-left: 1.5rem;
+    background-size: 1rem;
+    padding-bottom: 0.15rem;
+}
+
+.Toastify__toast--default {
+    cursor: pointer;
+    position: absolute;
+    width: 80%;
+    right: 10%;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    padding-left: 6px;
+    padding-right: 6px;
+    text-align: center;
+    border-radius: 5px !important;
+    margin: 10px auto !important;
+    background: #8FA32E !important;
+    font-weight: 500;
+    font-size: medium;
+    color: white !important;
+  }
+
+.Toastify__close-button {
+    display: none;
+}
