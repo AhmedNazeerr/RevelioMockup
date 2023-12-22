@@ -32,7 +32,7 @@ function App() {
         <Alert />
         <Header />
         {showLoader && <LoadingScreen />}
-        <div className="pt-8">
+        <div className="">
           <Routes>
             <Route path="/" element={<LoginPage />} />
             <Route path="/car-listing" element={<Listing />} />

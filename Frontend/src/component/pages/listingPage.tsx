@@ -40,8 +40,8 @@ const Listing = () => {
         }
     }
     return (
-        <div>
-            <div className="px-7 pb-10">
+        <div className="flex flex-col justify-between h-screen">
+            <div className="px-7 pt-28">
                 <div>
                     <Heading heading="Listings" />
                     <Border />

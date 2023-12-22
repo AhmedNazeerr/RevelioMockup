@@ -132,8 +132,8 @@ const KeyInfoPage = () => {
             .moreThan(0, 'owners can not be zero'),
     })
     return (
-        <div className="flex flex-col">
-            <div className="px-7">
+        <div className="flex flex-col gap-8">
+            <div className="px-7 pt-28">
                 <div>
                     <Heading heading="Key Information" />
                     <Border />

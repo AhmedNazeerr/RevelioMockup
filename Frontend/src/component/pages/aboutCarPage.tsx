@@ -62,8 +62,8 @@ const AboutCarPage = () => {
         }
     }, [])
     return (
-        <div className="flex flex-col">
-            <div className="px-7">
+        <div className="flex flex-col justify-between min-h-screen gap-8">
+            <div className="px-7 pt-28">
                 <div>
                     <Heading heading="About Car" />
                     <Border />

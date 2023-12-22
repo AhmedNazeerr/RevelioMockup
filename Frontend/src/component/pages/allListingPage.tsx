@@ -57,8 +57,8 @@ const AllListingPage = () => {
         }
     }, [])
     return (
-        <div>
-            <div className="px-7">
+        <div className="flex flex-col justify-between min-h-screen">
+            <div className="px-7 pt-28">
                 <div className="pb-4 flex items-center justify-between">
                     <div>
                         <Heading heading="All Listings" />
@@ -78,14 +78,14 @@ const AllListingPage = () => {
                             <p>Trash</p>
                         </div>
                     </div>
-                    <div className="pb-32">
+                    <div className="pb-5">
                         {
                             products.length > 0 && products.map((item, idx) => <ProductCard key={idx} deleteProduct={deleteProduct} item={item} />)
                         }
                     </div>
                 </div>
             </div>
-            <Footer isShow absoute={products.length === 0 ? true: false} />
+            <Footer isShow />
         </div>
     )
 }

@@ -3,7 +3,7 @@ import heading from '../../assets/heading.png'
 
 const Footer: React.FC<{ absoute?: boolean, isShow?: boolean }> = ({ absoute, isShow }) => {
     return (
-        isShow && <div className={absoute ? 'mt-8 absolute bottom-0 w-full' : 'mt-8'}>
+        isShow && <div className={absoute ? 'absolute bottom-0 w-full' : ''}>
             <div className="bg-main-color text-white pt-3 pl-7 pr-12 pb-4">
                 <img src={heading} className='w-64 h-16 object-contain' alt="page-headings" />
                 <div className='text-[0.875rem] text-white pl-[4.3rem] flex flex-col gap-2'>
