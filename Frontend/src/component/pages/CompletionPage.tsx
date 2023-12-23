@@ -60,7 +60,7 @@ const CompletionPage = () => {
                 about: aboutCar,
                 preparation: preparation
             }
-            const response = await axios.post('http://149.100.156.7:5000/api/v1/products', data, { withCredentials: true })
+            const response = await axios.post('/api/v1/products', data)
             if (response) {
                 dispatch(reviloActions.showLoaderToogler())
                 dispatch(reviloActions.showUploadMessageToogler())
@@ -116,7 +116,7 @@ const CompletionPage = () => {
                 about: aboutCar,
                 preparation: preparation
             }
-            const response = await axios.patch(`http://149.100.156.7:5000/api/v1/products/${id}`, data, { withCredentials: true })
+            const response = await axios.patch(`/api/v1/products/${id}`, data)
             if (response) {
                 dispatch(reviloActions.showLoaderToogler())
                 dispatch(reviloActions.showUploadMessageToogler())
@@ -150,7 +150,7 @@ const CompletionPage = () => {
                 about: aboutCar,
                 preparation: preparation
             }
-            const response = await axios.patch(`http://149.100.156.7:5000/api/v1/products/${id}`, data, { withCredentials: true })
+            const response = await axios.patch(`/api/v1/products/${id}`, data)
             if (response) {
                 dispatch(reviloActions.showLoaderToogler())
                 dispatch(reviloActions.showUploadMessageToogler())
@@ -183,7 +183,7 @@ const CompletionPage = () => {
     const userId = useSelector((state: RootState) => state.userId)
     const fetchUser = async () => {
         try {
-            const { data } = await axios.get(`http://149.100.156.7:5000/api/v1/users/showMe`, { withCredentials: true });
+            const { data } = await axios.get(`/api/v1/users/showMe`);
             dispatch(reviloActions.setUser(data.user.userId));
         } catch (error) {
             dispatch(reviloActions.resetUser())

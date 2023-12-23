@@ -28,7 +28,7 @@ const ProductCard: React.FC<{ item: { make: string, model: string, variant: stri
     };
     const updateProduct = async () => {
         try {
-            const response = await axios.get(`http://149.100.156.7:5000/api/v1/products/${item._id}`)
+            const response = await axios.get(`/api/v1/products/${item._id}`)
             if (response.status === 200) {
                 dispatch(reviloActions.set(response.data.product))
                 navigate('/key-information')
@@ -48,7 +48,7 @@ const ProductCard: React.FC<{ item: { make: string, model: string, variant: stri
                 </div>
             </div>
             <div className="text-gray-500 text-[0.8rem] flex gap-10 pr-2.5">
-                <i className="fa-regular fa-copy pr-1 cursor-pointer" onClick={() => copyToClipboard(`http://149.100.156.7:5173/car-display/${item._id}`)}></i>
+                <i className="fa-regular fa-copy pr-1 cursor-pointer" onClick={() => copyToClipboard(`http://149.100.156.7:4173/car-display/${item._id}`)}></i>
                 <i className="fa-solid fa-pen cursor-pointer" onClick={updateProduct}></i>
                 <i className="fa-regular fa-trash-can cursor-pointer" onClick={() => deleteProduct(item._id)}></i>
             </div>

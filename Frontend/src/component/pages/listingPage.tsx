@@ -13,7 +13,7 @@ const Listing = () => {
     const navigate = useNavigate()
     const fetchUser = async () => {
         try {
-            const { data } = await axios.get(`http://149.100.156.7:5000/api/v1/users/showMe`, { withCredentials: true });
+            const { data } = await axios.get(`/api/v1/users/showMe`);
             dispatch(reviloActions.setUser(data.user.userId));
         } catch (error) {
             dispatch(reviloActions.resetUser())
@@ -28,7 +28,7 @@ const Listing = () => {
     const logoutUser = async () => {
         dispatch(reviloActions.showLoaderToogler())
         try {
-            const response = await axios.delete('http://149.100.156.7:5000/api/v1/auth/logout', { withCredentials: true })
+            const response = await axios.delete('/api/v1/auth/logout')
             if (response.status === 200) {
                 dispatch(reviloActions.resetUser())
                 navigate('/')

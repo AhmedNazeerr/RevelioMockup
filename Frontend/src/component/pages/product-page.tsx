@@ -38,7 +38,7 @@ const ProductPage: React.FC = () => {
     const getProduct = async () => {
         dispatch(reviloActions.showLoaderToogler())
         try {
-            const response = await axios.get(`http://149.100.156.7:5000/api/v1/products/${id}`)
+            const response = await axios.get(`/api/v1/products/${id}`)
             if (response.status === 200) {
                 setProduct(response.data.product)
             }
