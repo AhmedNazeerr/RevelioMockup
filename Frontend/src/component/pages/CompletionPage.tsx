@@ -82,12 +82,18 @@ const CompletionPage = () => {
                 if (keyInfo.images[i] !== null) {
                     const response = await uploadImg(keyInfo.images[i])
                     if (response) {
+                        console.log(response)
                         images.push(response)
                     }
                 }
             }
             if (images.length === keyInfo.images.length) {
-                updateDataToServerWthNewImages()
+                const arr = [...updateImagesArray]
+                for(let i = 0; i < images.length; i++) {
+                    arr.pop()
+                    arr.push(images[i])
+                }
+                updateDataToServerWthNewImages(arr)
             }
         } catch (error) {
             toast('Problem in updating product please try again.')
@@ -132,7 +138,7 @@ const CompletionPage = () => {
             navigate('/car-listing')
         }
     }
-    const updateDataToServerWthNewImages = async () => {
+    const updateDataToServerWthNewImages = async (arr: string[]) => {
         try {
             const data = {
                 make: keyInfo.make,
@@ -146,7 +152,7 @@ const CompletionPage = () => {
                 askingPrice: price.asking_price,
                 capClean: price.cap_clean,
                 autoTraderDetail: price.autorader_retail,
-                images: images,
+                images: arr,
                 about: aboutCar,
                 preparation: preparation
             }

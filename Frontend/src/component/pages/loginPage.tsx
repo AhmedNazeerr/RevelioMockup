@@ -37,6 +37,7 @@ const LoginPage = () => {
         try {
             const { data } = await axios.get(`/api/v1/users/showMe`);
             dispatch(reviloActions.setUser(data.user.userId));
+            navigate('/car-listing')
         } catch (error) {
             dispatch(reviloActions.resetUser())
             navigate('/')

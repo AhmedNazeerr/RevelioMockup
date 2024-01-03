@@ -10,6 +10,7 @@ import axios from "axios";
 
 const KeyInfoPage = () => {
     const updateImageArray = useSelector((state: RootState) => state.updateImagesArray)
+    const ImageArray = useSelector((state: RootState) => state.images)
     const userId = useSelector((state: RootState) => state.userId)
     const keyInfo = useSelector((state: RootState) => state.keyInfo)
     const dispatch = useDispatch()
@@ -23,6 +24,9 @@ const KeyInfoPage = () => {
             navigate('/')
         }
     };
+    // useEffect(() => {
+    //     console.log(ImageArray)
+    // }, [ImageArray])
     useEffect(() => {
         if (!userId) {
             fetchUser()
@@ -45,14 +49,14 @@ const KeyInfoPage = () => {
                     )
                     .test(
                         'imageResolution',
-                        'Image resolution must be 1200x1000 or less',
+                        'Image resolution must be 1500x1000 or less',
                         value => {
                             if (!value) return true;
 
                             return new Promise((resolve) => {
                                 const img = new Image();
                                 img.onload = () => {
-                                    const valid = img.width <= 1200 && img.height <= 1000;
+                                    const valid = img.width <= 1500 && img.height <= 1000;
                                     resolve(valid);
                                 };
                                 img.onerror = () => {
@@ -95,14 +99,14 @@ const KeyInfoPage = () => {
                     )
                     .test(
                         'imageResolution',
-                        'Image resolution must be 1200x1000 or less',
+                        'Image resolution must be 1500x1000 or less',
                         value => {
                             if (!value) return true;
 
                             return new Promise((resolve) => {
                                 const img = new Image();
                                 img.onload = () => {
-                                    const valid = img.width <= 1200 && img.height <= 1000;
+                                    const valid = img.width <= 1500 && img.height <= 1000;
                                     resolve(valid);
                                 };
                                 img.onerror = () => {
@@ -229,21 +233,31 @@ const KeyInfoPage = () => {
                                     <input
                                         type="file"
                                         className="hidden"
-                                        multiple
+                                        // multiple
                                         ref={imageUploadRef}
                                         accept="image/jpeg,image/png,image/bmp,image/webp"
                                         onChange={(event) => {
-                                            const files = event.currentTarget.files;
-                                            const fileArray = [];
-                                            for (let i = 0; i < files!.length; i++) {
-                                                fileArray.push(files![i]);
+                                            const file = event.currentTarget.files![0];
+                                            if (keyInfoForm.errors.images !== 'Cannot upload more than 4 images.') {
+                                                const reader = new FileReader();
+                                                reader.onload = (event) => {
+                                                    dispatch(reviloActions.setImages(event.target?.result))
+                                                }
+                                                reader.readAsDataURL(file);
+                                                setFieldValue("images", [...keyInfoForm.values.images, file]);
                                             }
-                                            setFieldValue("images", fileArray);
                                         }}
                                     />
                                     {keyInfoForm.touched.images && keyInfoForm.errors.images ? (
                                         <div className="text-[0.45rem] text-red-600 pt-0.5">{keyInfoForm.errors.images}</div>
                                     ) : null}
+                                    {
+                                        ImageArray.length > 0 && <div className="h-14 flex items-center gap-x-2 mt-2">
+                                            {
+                                                ImageArray.map((image, idx) => <img key={idx} src={image} alt={`image_${idx}`} className="h-full w-16 object-contain object-center border-[0.5px] border-gray-400 p-0.5 rounded" />)
+                                            }
+                                        </div>
+                                    }
                                 </div>
                                 <button type="button" className="bg-high-light-color text-white py-2 rounded-full text-[1.25rem] font-bold w-32 mt-4 mr-4" onClick={() => {
                                     navigate('/car-listing')
@@ -331,21 +345,31 @@ const KeyInfoPage = () => {
                                     <input
                                         type="file"
                                         className="hidden"
-                                        multiple
+                                        // multiple
                                         ref={imageUploadRef}
                                         accept="image/jpeg,image/png,image/bmp,image/webp"
                                         onChange={(event) => {
-                                            const files = event.currentTarget.files;
-                                            const fileArray = [];
-                                            for (let i = 0; i < files!.length; i++) {
-                                                fileArray.push(files![i]);
+                                            const file = event.currentTarget.files![0];
+                                            if (keyInfoForm.errors.images !== 'Cannot upload more than 4 images.') {
+                                                const reader = new FileReader();
+                                                reader.onload = (event) => {
+                                                    dispatch(reviloActions.updateImagesArrayValue(event.target?.result))
+                                                }
+                                                reader.readAsDataURL(file);
+                                                setFieldValue("images", [...keyInfoForm.values.images, file]);
                                             }
-                                            setFieldValue("images", fileArray);
                                         }}
                                     />
                                     {keyInfoForm.touched.images && keyInfoForm.errors.images ? (
                                         <div className="text-[0.45rem] text-red-600 pt-0.5">{keyInfoForm.errors.images}</div>
                                     ) : null}
+                                    {
+                                        updateImageArray.length > 0 && <div className="h-14 flex items-center gap-x-2 mt-2">
+                                            {
+                                                updateImageArray.map((image, idx) => <img key={idx} src={image} alt={`image_${idx}`} className="h-full w-16 object-contain object-center border-[0.5px] border-gray-400 p-0.5 rounded" />)
+                                            }
+                                        </div>
+                                    }
                                 </div>
                                 <button type="button" className="bg-high-light-color text-white py-2 rounded-full text-[1.25rem] font-bold w-32 mt-4 mr-4" onClick={() => {
                                     navigate('/car-listing')

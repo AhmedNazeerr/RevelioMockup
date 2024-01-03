@@ -104,7 +104,7 @@ const PricePage = () => {
                                 ) : null}
                             </div>
                             <div className="pb-3">
-                                <label className="text-[1.25rem] font-bold">Autorader Retail</label>
+                                <label className="text-[1.25rem] font-bold">Autotrader Retail</label>
                                 <input type="text" className="bg-[#D9D9D9] w-full text-[0.625rem] p-2 border-[0.5px] border-gray-400 outline-none" placeholder="enter here..." {...keyInfoForm.getFieldProps('autorader_retail')} />
                                 {keyInfoForm.touched.autorader_retail && keyInfoForm.errors.autorader_retail ? (
                                     <div className="text-[0.45rem] text-red-600">{keyInfoForm.errors.autorader_retail}</div>

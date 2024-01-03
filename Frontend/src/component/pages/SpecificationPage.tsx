@@ -13,22 +13,25 @@ const SpecificationPage = () => {
     const keyInfo = useSelector((state: RootState) => state.keyInfo)
     const aboutCar = useSelector((state: RootState) => state.aboutCar)
     const dispatch = useDispatch()
-    const specification = useSelector((state:RootState) => state.specification)
+    const specification = useSelector((state: RootState) => state.specification)
     const userId = useSelector((state: RootState) => state.userId)
     const [content, setContent] = useState(specification)
     const [showError, setShowError] = useState(false)
-    const [containsUnorderedList, setContainsUnorderedList] = useState(false)
+    // const [containsUnorderedList, setContainsUnorderedList] = useState(false)
     const modules = {
         toolbar: [
             ['bold', 'italic', 'underline',],
-            [{ 'list': 'bullet' }],    
+            [{ 'list': 'bullet' }],
         ],
     };
     const navigate = useNavigate()
     const navigateToNext = () => {
-        if (!content.length && !containsUnorderedList) {
+        // if (!content.length && !containsUnorderedList) {
+        //     setShowError(true)
+        // } else if (containsUnorderedList){
+        if (!content.length) {
             setShowError(true)
-        } else if (containsUnorderedList){
+        } else {
             dispatch(reviloActions.setSpecification(content))
             setShowError(false)
             navigate('/service-history')
@@ -48,7 +51,7 @@ const SpecificationPage = () => {
             navigate('/car-listing')
         }
     }
-    
+
     const checkForUpdateData = () => {
         if (!keyInfo.make || !keyInfo.model || !keyInfo.variant || !keyInfo.registration || !keyInfo.mileage || !keyInfo.owners || !updateImagesArray.length || !aboutCar.length) {
             navigate('/car-listing')
@@ -64,13 +67,13 @@ const SpecificationPage = () => {
             checkForUpdateData()
         }
     }, [])
-    useEffect(() => {
-        if (content.includes('<ul>') && content.includes('</ul>')) {
-            setContainsUnorderedList(true);
-        } else {
-            setContainsUnorderedList(false);
-        }
-    }, [content])
+    // useEffect(() => {
+    //     if (content.includes('<ul>') && content.includes('</ul>')) {
+    //         setContainsUnorderedList(true);
+    //     } else {
+    //         setContainsUnorderedList(false);
+    //     }
+    // }, [content])
     return (
         <div className="flex flex-col justify-between min-h-screen gap-8">
             <div className="px-7 pt-28">
@@ -96,9 +99,9 @@ const SpecificationPage = () => {
                     {
                         showError && <p className="text-[0.45rem] text-red-600 pt-0.5">please fill some the specification.</p>
                     }
-                    {
+                    {/* {
                         !containsUnorderedList && <p className="text-[0.45rem] text-red-600 pt-0.5">please enter the list of specification.</p>
-                    }
+                    } */}
                 </div>
                 <button type="button" className="bg-high-light-color text-white py-2 rounded-full text-[1.25rem] font-bold w-32 mt-4" onClick={() => navigate('/about-car')}>Previous</button>
                 <br />

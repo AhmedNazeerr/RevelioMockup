@@ -23,7 +23,7 @@ const HeroSection: React.FC<{ make: string, model: string, varient: string, aski
                 </div>
                 <div className="flex items-center gap-1.5">
                     <img className="w-4 h-4" src={pattern} alt="pattern" />
-                    <p>Autorader Retail - £{autoTraderDetail}</p>
+                    <p>Autotrader Retail - £{autoTraderDetail}</p>
                 </div>
             </div>
         </div>

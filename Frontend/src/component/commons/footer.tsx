@@ -7,7 +7,7 @@ const Footer: React.FC<{ absoute?: boolean, isShow?: boolean }> = ({ absoute, is
             <div className="bg-main-color text-white pt-3 pl-7 pr-12 pb-4">
                 <img src={heading} className='w-64 h-16 object-contain' alt="page-headings" />
                 <div className='text-[0.875rem] text-white pl-[4.3rem] flex flex-col gap-2'>
-                    <p className='drop-shadow'>Timings: Monday - Friday: 9 AM till 6 PM
+                    <p className='drop-shadow'>Opening Hours: Monday - Friday: 9 AM till 6 PM
                         Sat - Sun 10 AM till 4 PM
                     </p>
                     <div>

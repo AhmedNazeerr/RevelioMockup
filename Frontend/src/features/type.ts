@@ -19,4 +19,5 @@ export interface initialStateType {
   price: { asking_price: string; cap_clean: string; autorader_retail: string};
   preparation: string; 
   updateImagesArray: string[]
+  images: string[]
 }

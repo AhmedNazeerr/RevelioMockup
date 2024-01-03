@@ -10,7 +10,7 @@ const initialState: initialStateType = {
     make: "",
     model: "",
     variant: "",
-    miles: '',
+    miles: "",
     registration: "",
     mileage: "",
     owners: "",
@@ -25,11 +25,12 @@ const initialState: initialStateType = {
     autorader_retail: "",
   },
   preparation: "",
-  updateImagesArray: []
+  updateImagesArray: [],
+  images: [],
 };
 
 const decodeHtml = (html: string) => {
-  const textArea = document.createElement('textarea');
+  const textArea = document.createElement("textarea");
   textArea.innerHTML = html;
   return textArea.value;
 };
@@ -38,13 +39,19 @@ const reviloSlice = createSlice({
   name: "Revilo",
   initialState: initialState,
   reducers: {
+    setImages: (state, action) => {
+      state.images.push(action.payload)
+    },
+    reSetImages: (state) => {
+      state.images = []
+    },
     setUser: (state, action) => {
       state.userId = action.payload;
     },
     resetUser: (state) => {
       state.userId = "";
     },
-    
+
     showUploadMessageToogler: (state) => {
       state.showUploadMessage = !state.showUploadMessage;
     },
@@ -52,8 +59,16 @@ const reviloSlice = createSlice({
       state.showLoader = !state.showLoader;
     },
     setKeyInfo: (state, action) => {
-      const { make, model, registration_year, variant, registration, mileage, owners, images } =
-        action.payload;
+      const {
+        make,
+        model,
+        registration_year,
+        variant,
+        registration,
+        mileage,
+        owners,
+        images,
+      } = action.payload;
       state.keyInfo.make = make;
       state.keyInfo.model = model;
       state.keyInfo.miles = registration_year;
@@ -86,7 +101,7 @@ const reviloSlice = createSlice({
       state.keyInfo = {
         make: "",
         model: "",
-        miles: '',
+        miles: "",
         variant: "",
         registration: "",
         mileage: "",
@@ -124,8 +139,16 @@ const reviloSlice = createSlice({
         autorader_retail: action.payload.autoTraderDetail,
       };
       state.preparation = decodeHtml(action.payload.preparation);
-      state.updateImagesArray = action.payload.images.map((image: string) => image);
+      state.updateImagesArray = action.payload.images.map(
+        (image: string) => image
+      );
     },
+    updateImagesArrayValue: (state, action) => {
+      const arr = [...state.updateImagesArray];
+      arr.shift();
+      arr.push(action.payload);
+      state.updateImagesArray = arr
+    }
   },
 });
 
